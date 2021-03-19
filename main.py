@@ -13,10 +13,10 @@ NOTES:
 1. If searching YouTube, only look for 'lyrics' videos
 '''
 
-from Music import GoogleSearch
+from Music import GoogleSearch, Downloader
 if __name__ == "__main__":
-    song = "20 percent cooler"
-    file_type = "mp3"
+    song = "fear of the dark iron maiden"
     gs = GoogleSearch()
-    result = gs.SearchSong(song, file_type)
-    print(result)
+    dl = Downloader()
+    url = gs.SearchSong(song)
+    dl.downloadAudio(url)
