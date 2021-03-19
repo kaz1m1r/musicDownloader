@@ -1,25 +1,44 @@
 from typing import List
 from googlesearch import search
+from youtube_dl import YoutubeDL
 
+class Downloader:
+
+    def __init__(self):
+        """
+        Class whose instance can be used to extract audio from a URL
+        """
+
+    def downloadAudio(self, url: str) -> None:
+        """
+        Download audio file that corresponds with the url argument
+        :param url: str
+        :return: None
+        """
+
+        # instance of a class that can be used to download audio
+        # audio_downloader = YoutubeDL({"format": "bestaudio"})
+        audio_downloader = YoutubeDL({"format": "mp4"})
+
+        # download the audio file in the current directory
+        audio_downloader.extract_info(url)
 
 class GoogleSearch:
 
     def __init__(self):
         """
         Class whose instance can retrieve urls
-        :param search_description: Description of what you want to retrieve
-        :param domain: website from which you want to retrieve
         """
 
-    def SearchSong(self, song_name: str, file_type: str) -> str:
+    def SearchSong(self, song_name: str) -> str:
         """
-        Perform google search and retrieve URL in the form of string. The url redirects
-        to a file of the specified file type
+        Retrieve the url that corresponds with the lyrics video of a song. The url is always a
+        YouTube url.
         :return: str
         """
 
         # query that should be performed to get the url to a .mp3 file
-        query: str = f"index of: .{file_type} {song_name}"
+        query: str = f"youtube lyrics {song_name}"
 
         # empty string that contains the query results
         results: List[str] = []
@@ -30,59 +49,3 @@ class GoogleSearch:
 
         # return url as string
         return results[0]
-
-
-class Song:
-
-    def __init__(self, song_name: str, file_type: str):
-        self.song_name = song_name
-        self.file_type = file_type
-
-        # making GoogleSearch object
-        gs = GoogleSearch()
-
-        # retreiving the url that corresponds with the song and file type
-        self.song_url: str = gs.SearchSong(song_name, file_type)
-
-    def getFileType(self) -> str:
-        """
-        Return the file type as string
-        :return: str
-        """
-
-        # return the file type of the song as string
-        return self.file_type
-
-    def getName(self) -> str:
-        """
-        Return the name of the song
-        :return: str
-        """
-
-        # return the song name as string
-        return self.song_name
-
-    def getSongUrl(self) -> str:
-        """
-        return the url that corresponds with the Song instance
-        :return:
-        """
-
-        # return url as string
-        return self.song_url
-
-
-class Album:
-
-    def __init__(self, songs: List[Song] = List[Song]):
-        self.songs: List[Song] = songs
-
-    def addSong(self, song: Song) -> None:
-        """
-        Adding a song to the album
-        :param song: Song that should be added to album
-        :return: None
-        """
-
-        # adding the song to the album
-        self.songs.append(song)
