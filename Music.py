@@ -2,6 +2,7 @@ from typing import List
 from googlesearch import search
 from youtube_dl import YoutubeDL
 
+
 class Downloader:
 
     def __init__(self):
@@ -9,19 +10,34 @@ class Downloader:
         Class whose instance can be used to extract audio from a URL
         """
 
-    def downloadAudio(self, url: str) -> None:
+        # instance of YoutubeDownload class that can download a video using a url
+        # with only the url
+        self.video_downloader = YoutubeDL({"format": "mp4"})
+
+        # instance of YoutubeDownload class that can download audio using a url
+        # audio_downloader = YoutubeDL({"format": "bestaudio"})  # downloads best audio file
+        self.audio_downloader = YoutubeDL({"format": "m4a"})
+
+    def downloadVideo(self, url: str) -> None:
         """
-        Download audio file that corresponds with the url argument
+        Download video using a url
         :param url: str
         :return: None
         """
 
-        # instance of a class that can be used to download audio
-        # audio_downloader = YoutubeDL({"format": "bestaudio"})
-        audio_downloader = YoutubeDL({"format": "mp4"})
+        # download the video to the current directory
+        self.video_downloader.extract_info(url)
+
+    def downloadAudio(self, url: str) -> None:
+        """
+        Download audio file using a url
+        :param url: str
+        :return: None
+        """
 
         # download the audio file in the current directory
-        audio_downloader.extract_info(url)
+        self.audio_downloader.extract_info(url)
+
 
 class GoogleSearch:
 
@@ -30,15 +46,16 @@ class GoogleSearch:
         Class whose instance can retrieve urls
         """
 
-    def SearchSong(self, song_name: str) -> str:
+    def SearchSong(self, song_description: str) -> str:
         """
-        Retrieve the url that corresponds with the lyrics video of a song. The url is always a
-        YouTube url.
+        Retrieve the url that corresponds with the lyrics video of a son. The url is always
+        a YouTube url.
+        :param song_description: description of song (e.g. "bohemian rhapsody queen")
         :return: str
         """
 
         # query that should be performed to get the url to a .mp3 file
-        query: str = f"youtube lyrics {song_name}"
+        query: str = f"youtube lyrics {song_description}"
 
         # empty string that contains the query results
         results: List[str] = []

@@ -1,3 +1,5 @@
+#!/usr/bin/python3.9
+
 '''
 TODO:
 ONLY DOWNLOAD .mp3 FILES
@@ -15,7 +17,7 @@ NOTES:
 
 from Music import GoogleSearch, Downloader
 if __name__ == "__main__":
-    song = "fear of the dark iron maiden"
+    song = "enter sandman metallica"
     gs = GoogleSearch()
     dl = Downloader()
     url = gs.SearchSong(song)
