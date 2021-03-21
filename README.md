@@ -11,3 +11,4 @@ The purpose of musicDownloader is to quickly download music to the directory tha
 4. Use the 'youtube_dl' library to download the audio that corresponds with the retrieved url to the current directory.
 
 # Installation
+Personally I prefer clone the download the content of the musicDownloader repo to a folder in my home directory (e.g. /home/kaz1m1r/thirdPartyPrograms) and then add this folder to my PATH variable. This can be done by adding the line ```export PATH=$PATH:/home/kaz1m1r/thirdPartyPrograms``` to my ```.bashrc``` and/or ```.zshrc```. This ensures that every time I start a terminal session the folder ```/home/kaz1m1r/thirdPartyPrograms``` is added to my PATH variable. In turn it makes it easier to download music in different folders since I only have to create a foler named after a band, ```cd``` into the folder and download the music.
