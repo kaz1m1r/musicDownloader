@@ -90,8 +90,8 @@ def welcomeMessage() -> None:
     usage: str = f"                                                       version 1\n\n" \
                  f"USAGE: \n" \
                  f"{colored('----------------------------------------------------------------', 'yellow')} \n" \
-                 f"Enter a song description (e.g. 'bohemian rhapsody queen') \n" \
-                 f"to download the song into the current directory. Enter '{colored('quit', 'red')} \n" \
+                 f"Enter a song description (e.g. 'bohemian rhapsody queen') to \n" \
+                 f"download the song into the current directory. Enter '{colored('quit', 'red')} \n" \
                  f"at 'song > ' and press the 'enter' key to quit the program.\n" \
                  f"{colored('----------------------------------------------------------------', 'yellow')}"
 
